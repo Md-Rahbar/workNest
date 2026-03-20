@@ -3,7 +3,7 @@ import {ApiError} from "../utils/api-error.js"
 import {asyncHandler} from "../utils/async-handler.js"
 import jwt from "jsonwebtoken"
 
-export const verfyJWT = asyncHandler(async(requestAnimationFrame,resizeBy,next)=>{
+ export const verifyJWT = asyncHandler(async(req,res,next)=>{
     const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ","") 
 
     if(!token){
@@ -23,4 +23,4 @@ export const verfyJWT = asyncHandler(async(requestAnimationFrame,resizeBy,next)=
     } catch (error) {
        throw new ApiError(401,"Invalid access token"); 
     }
-})
+});
